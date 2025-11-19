@@ -1,7 +1,7 @@
 # project-to-text
 
 [![npm version](https://img.shields.io/npm/v/project-to-text.svg)](https://www.npmjs.com/package/project-to-text)
-[![license](https://img.shields.io/npm/l/project-to-text.svg)](https://github.com/your-username/project-to-text/blob/main/LICENSE)
+[![license](https://img.shields.io/npm/l/project-to-text.svg)](https://github.com/IrbadAbdeldjelil/project-to-text/blob/main/LICENSE)
 [![downloads](https://img.shields.io/npm/dt/project-to-text.svg)](https://www.npmjs.com/package/project-to-text)
 
 A powerful tool that converts your entire project into a single text file, making it easy to share with AI assistants for code review, analysis, and feedback.
@@ -90,15 +90,11 @@ CONTENT : {
 
 
 
-## 📜 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## 👨‍💻 Author
 
 **Irbad Abdeldjelil**
 - Email: irbadabdeldjelil@gmail.com
-- GitHub: [@your-username](https://github.com/IrbadAbdeldjelil)
+- GitHub: [IrbadAbdeldjelil](https://github.com/IrbadAbdeldjelil)
 
 ## 🙏 Acknowledgments
 
@@ -112,4 +108,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **If you find this tool helpful, please consider giving it a ⭐ on GitHub!**
 
 </div>
-```

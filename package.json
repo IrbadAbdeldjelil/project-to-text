@@ -1,6 +1,6 @@
 {
   "name": "project-to-text",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Convert your project to a single text file for AI analysis and code sharing",
   "keywords": [
     "project",
@@ -27,14 +27,14 @@
     "fast-glob": "^3.3.3"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=24.6.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/irbad/project-to-text"
+    "url": "https://github.com/IrbadAbdeldjelil/project-to-text"
   },
-  "homepage": "https://github.com/irbad/project-to-text#readme",
+  "homepage": "https://github.com/IrbadAbdeldjelil/project-to-text#readme",
   "bugs": {
-    "url": "https://github.com/irbad/project-to-text/issues"
+    "url": "https://github.com/IrbadAbdeldjelil/project-to-text/issues"
   }
 }
