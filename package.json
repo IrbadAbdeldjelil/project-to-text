@@ -1,0 +1,40 @@
+{
+  "name": "project-to-text",
+  "version": "1.0.0",
+  "description": "Convert your project to a single text file for AI analysis and code sharing",
+  "keywords": [
+    "project",
+    "text",
+    "export", 
+    "ai",
+    "analysis",
+    "documentation",
+    "code-sharing"
+  ],
+  "license": "MIT",
+  "author": "Irbad Abdeldjelil <irbadabdeldjelil@gmail.com>",
+  "type": "commonjs",
+  "main": "bin/exporter.js",
+  "bin": {
+    "project-to-text": "bin/exporter.js"
+  },
+  "scripts": {
+    "start": "node bin/exporter.js",
+    "export": "node bin/exporter.js",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "dependencies": {
+    "fast-glob": "^3.3.3"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/irbad/project-to-text"
+  },
+  "homepage": "https://github.com/irbad/project-to-text#readme",
+  "bugs": {
+    "url": "https://github.com/irbad/project-to-text/issues"
+  }
+}
