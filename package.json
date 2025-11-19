@@ -1,6 +1,6 @@
 {
   "name": "project-to-text",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Convert your project to a single text file for AI analysis and code sharing",
   "keywords": [
     "project",

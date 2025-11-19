@@ -26,6 +26,9 @@ Creates `thisProject.txt` with your project content.
 
 ### Command Line
 ```bash
+#install it globally
+npm install -g project-to-text
+
 # Basic usage
 project-to-text
 
