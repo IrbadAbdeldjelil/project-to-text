@@ -1,54 +1,38 @@
 {
   "name": "project-to-text",
-  "version": "1.0.4",
-  "description": "Convert your project to a single text file for AI analysis and code sharing",
+  "version": "1.0.5",
+  "description": "CLI tool to export your entire project to a single text file for sharing, code review, or AI analysis",
   "keywords": [
+    "cli",
+    "project-export",
+    "code-review",
     "ai",
     "chatgpt",
-    "claude",
-    "code-analysis",
-    "project-export",
     "developer-tools",
-    "code-review",
-    "ai-assistant",
-    "project-to-text",
-    "repomix-alternative",
-    "lightweight",
-    "fast",
-    "simple",
-    "media-ignore",
-    "gitignore-support",
+    "text-export",
     "file-converter",
-    "project-analyzer",
-    "ai-tools",
-    "code-sharing",
-    "project-documentation",
+    "project-to-text",
+    "ptt",
     "automation",
     "productivity",
     "nodejs",
-    "javascript",
-    "open-source",
-    "text",
-    "to-text",
-    "one-file"
+    "javascript"
   ],
   "license": "MIT",
   "author": "Irbad Abdeldjelil <irbadabdeldjelil@gmail.com>",
-  "type": "commonjs",
-  "main": "bin/exporter.js",
+  "main": "src/index.js",
   "bin": {
-    "project-to-text": "bin/exporter.js"
+    "ptt": "bin/project-to-text.js"
   },
   "scripts": {
-    "start": "node bin/exporter.js",
-    "export": "node bin/exporter.js",
+    "start": "node bin/project-to-text.js",
     "test": "echo \"No tests specified\" && exit 0"
   },
   "dependencies": {
     "fast-glob": "^3.3.3"
   },
   "engines": {
-    "node": ">=24.6.0"
+    "node": ">=16.0.0"
   },
   "repository": {
     "type": "git",

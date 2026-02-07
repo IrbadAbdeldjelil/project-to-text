@@ -1,17 +1,31 @@
-const scanner = require('./scanner');
 const fs = require('fs/promises');
+const path = require('path');
 
-module.exports = async function (thisFile, customIgnore = []) {
-    const files = await scanner(customIgnore);
+async function readFiles(files, {include = null, maxSize = 1024*1024} = {}) {
     let results = '';
-    for (const file of files) {
-         if (file.includes(thisFile)) continue;           
-        // get file content
-        let content = await fs.readFile(file, 'utf8');        
-        // if not empty
-         if (content) {            
-            results += `FILE :  ${file} \nCONTENT : ${content.trim()}\n`;
-         }
-     }
-    return results;
+    let exported = 0;
+    let skippedSize = 0;
+    let skippedInclude = 0;
+    const extensionCount = {};
+
+    for(const file of files){
+        try {
+            const stat = await fs.stat(file);
+            if(stat.size > maxSize){ skippedSize++; continue; }
+
+            const ext = path.extname(file);
+            if(include && !include.includes(ext)){ skippedInclude++; continue; }
+
+            const content = await fs.readFile(file,'utf8');
+            if(content && content.trim()){
+                results += `FILE : ${file}\nCONTENT : ${content.trim()}\n\n`;
+                exported++;
+                extensionCount[ext] = (extensionCount[ext] || 0) + 1;
+            }
+        } catch { continue; }
+    }
+
+    return {results, exported, skippedSize, skippedInclude, extensionCount};
 }
+
+module.exports = readFiles;

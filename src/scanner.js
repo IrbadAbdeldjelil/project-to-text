@@ -1,71 +1,39 @@
 const fg = require('fast-glob');
-const fs = require('fs/promises');
 const path = require('path');
+const { readGitignore } = require('./helpers');
 
-module.exports = async (customIgnore = []) => {
-    const defaultIgnore = [
-        // الملفات الأساسية
-        'node_modules/**',
-        'README.md',
-        'package-lock.json', 
-        'package.json',
-        
-        // نظام التحكم بالإصدارات
-        '.git/**',
-        
-        // ملفات النظام
-        '.DS_Store',
-        'Thumbs.db',
-        'desktop.ini',
-        
-        // الملفات المنطقية
-        '*.log',
-        '*.tmp',
-        '*.temp',
-        
-        // مجلدات البناء والتوزيع
-        'coverage/**',
-        'dist/**',
-        'build/**',
-        'out/**',
-        '.next/**',
-        '.nuxt/**',
-        
-        // البيئة والإعدادات
-        '.env*',
-        '.config/**',
-        
-        // الوسائط - الملفات الثقيلة
-        '**/*.jpg', '**/*.jpeg', '**/*.png', '**/*.gif', '**/*.bmp', '**/*.svg',
-        '**/*.mp4', '**/*.avi', '**/*.mov', '**/*.wmv', '**/*.flv',
-        '**/*.mp3', '**/*.wav', '**/*.ogg', '**/*.flac',
-        '**/*.pdf', '**/*.doc', '**/*.docx', '**/*.ppt', '**/*.pptx',
-        '**/*.zip', '**/*.rar', '**/*.tar', '**/*.gz',
-        
-        // بيانات وقواعد بيانات
-        '**/*.db', '**/*.sqlite', '**/*.mdb'
-    ];
-    
-    // قراءة .gitignore إذا موجود
-    let gitignorePatterns = [];
-    try {
-        const gitignoreContent = await fs.readFile('.gitignore', 'utf8');
-        gitignorePatterns = gitignoreContent
-            .split('\n')
-            .filter(line => line.trim() && !line.startsWith('#'))
-            .map(pattern => pattern.trim());
-    } catch (error) {
-        // إذا لم يوجد .gitignore، هذا طبيعي
-    }
-    
-    const ignoreList = [...defaultIgnore, ...gitignorePatterns, ...customIgnore];
-    
-    const results = await fg('**/**', {
-        ignore: ignoreList,
+const defaultIgnore = [
+    'node_modules/**', '.git/**',
+    'dist/**','build/**','out/**','coverage/**',
+    '.next/**','.nuxt/**','.env*',
+    '**/*.log','**/*.tmp',
+    '**/*.jpg','**/*.png','**/*.mp3','**/*.mp4','**/*.zip',
+    '**/*.db','**/*.sqlite'
+];
+
+async function getFiles({ignore = [], include = null, maxSize = 1024*1024, outputFile = null}) {
+    const gitignore = await readGitignore();
+    const allIgnore = [...defaultIgnore, ...gitignore, ...ignore];
+
+    let files = await fg('**/*', {
+        ignore: allIgnore,
         dot: true,
-        onlyFiles: true, // نتأكد أننا نحصل على ملفات فقط وليس مجلدات
-        caseSensitiveMatch: false
+        onlyFiles: true,
+        followSymbolicLinks: false
     });
-    
-    return results;
+
+    const currentFile = path.resolve(__filename);
+    const outputPath = outputFile ? path.resolve(outputFile) : null;
+
+    // تجاهل CLI الحالي وملف الإخراج
+    files = files.filter(f => {
+        const full = path.resolve(f);
+        if(full === currentFile) return false;
+        if(outputPath && full === outputPath) return false;
+        return true;
+    });
+
+    return files;
 }
+
+module.exports = getFiles;
