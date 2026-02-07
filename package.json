@@ -22,10 +22,10 @@
   "author": "Irbad Abdeldjelil <irbadabdeldjelil@gmail.com>",
   "main": "src/index.js",
   "bin": {
-    "ptt": "bin/project-to-text.js"
+    "ptt": "bin/project_to_text.js"
   },
   "scripts": {
-    "start": "node bin/project-to-text.js",
+    "start": "node bin/project_to_text.js",
     "test": "echo \"No tests specified\" && exit 0"
   },
   "dependencies": {
